@@ -1,0 +1,244 @@
+{
+  "blogCard": {
+    "authorAndDate": "",
+    "coverImage": "",
+    "noDate": "",
+    "openPost": "",
+    "subtitle": "",
+    "title": "",
+    "unknownAuthor": ""
+  },
+  "blogCategories": {
+    "empty": "",
+    "errors": {
+      "load": ""
+    },
+    "loading": "",
+    "tapToView": ""
+  },
+  "chat": {
+    "emptyMessage": "",
+    "imageMessage": "",
+    "messageText": "",
+    "myMessage": "",
+    "otherMessage": ""
+  },
+  "chatInput": {
+    "input": "",
+    "logs": {
+      "uploadError": "",
+      "uploadSuccess": ""
+    },
+    "pickImage": "",
+    "placeholder": "",
+    "send": ""
+  },
+  "chatRoom": {
+    "loading": "",
+    "logs": {
+      "ackError": "",
+      "ackReceived": "",
+      "apiResponse": "",
+      "cleanup": "",
+      "emptyPayload": "",
+      "loadError": "",
+      "loadFinish": "",
+      "loadingRender": "",
+      "loadStart": "",
+      "messageAccepted": "",
+      "messageExtracted": "",
+      "messageIgnored": "",
+      "messageRaw": "",
+      "messagesUpdated": "",
+      "noPermission": "",
+      "render": "",
+      "renderMessages": "",
+      "sendCalled": "",
+      "socketCleanup": "",
+      "socketConnect": "",
+      "socketCreated": "",
+      "socketDisconnect": "",
+      "socketError": "",
+      "socketLate": "",
+      "socketNullCleanup": "",
+      "socketNullSend": "",
+      "stateInfo": "",
+      "useEffectMount": ""
+    },
+    "noPermission": ""
+  },
+  "feedFree": {
+    "about": "",
+    "bio": "",
+    "birthday": "",
+    "city": "",
+    "country": "",
+    "gender": "",
+    "intention": "",
+    "languages": "",
+    "orientation": "",
+    "pronoun": "",
+    "relationshipType": "",
+    "state": "",
+    "years": ""
+  },
+  "forgot": {
+    "backToLogin": "Retour à la connexion",
+    "emailError": "Impossible d'envoyer l'e-mail. Réessayez.",
+    "emailInvalid": "Entrez un e-mail valide",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "emailSent": "Nous avons envoyé un lien de récupération à votre e-mail.",
+    "submit": "Envoyer le lien de récupération",
+    "title": "Récupérer le mot de passe"
+  },
+  "inicio": {
+    "emptyFeed": "",
+    "loading": "",
+    "superLikeLog": ""
+  },
+  "likeButtons": {
+    "container": "",
+    "dislike": "",
+    "like": "",
+    "logs": {
+      "dislikeClick": "",
+      "dislikeError": "",
+      "likeError": "",
+      "matchDetected": "",
+      "superLikeClick": "",
+      "superLikeError": "",
+      "superLikeInvalidUser": "",
+      "superLikeMatched": "",
+      "superLikeNoMatch": "",
+      "superLikeResponse": "",
+      "superLikeSending": ""
+    },
+    "superLike": ""
+  },
+  "likeCard": {
+    "openProfile": "",
+    "placeholderImage": "",
+    "received": "",
+    "sent": "",
+    "unknown": "",
+    "userPhoto": ""
+  },
+  "likesReceived": {
+    "empty": "",
+    "loading": "",
+    "logs": {
+      "loadError": ""
+    },
+    "title": ""
+  },
+  "likesSection": {
+    "container": "",
+    "logs": {
+      "blocked": "",
+      "canSeeSent": "",
+      "userPlan": ""
+    }
+  },
+  "likesSent": {
+    "empty": "",
+    "loading": "",
+    "logs": {
+      "loadError": ""
+    },
+    "title": ""
+  },
+  "login": {
+    "email": "E-mail",
+    "forgotPassword": "Mot de passe oublié ?",
+    "loading": "Chargement...",
+    "password": "Mot de passe",
+    "register": "Créer un compte",
+    "submit": "Se connecter",
+    "title": "Connexion"
+  },
+  "matches": {
+    "empty": "",
+    "errors": {
+      "load": ""
+    },
+    "loading": "",
+    "tapToChat": ""
+  },
+  "matchModal": {
+    "container": "",
+    "continue": "",
+    "couple": "",
+    "goToChat": "",
+    "title": "",
+    "user1Photo": "",
+    "user2Photo": ""
+  },
+  "premiumCheckout": {
+    "title": ""
+  },
+  "register": {
+    "email": "E-mail",
+    "errorCreate": "Erreur lors de la création du compte.",
+    "errorMissingFields": "Remplissez tous les champs et choisissez une photo.",
+    "name": "",
+    "password": "Mot de passe",
+    "pickPhoto": "Choisir une photo",
+    "submit": "S'inscrire",
+    "success": "Compte créé avec succès !",
+    "title": "Créer un compte"
+  },
+  "swipeUserCard": {
+    "container": "",
+    "nextPhoto": "",
+    "photoProgress": "",
+    "userPhoto": "",
+    "years": ""
+  },
+  "tabs": {
+    "chat": "Chat",
+    "community": "Communauté",
+    "explore": "Explorer",
+    "home": "Accueil",
+    "likes": "Favoris",
+    "profile": "Profil"
+  },
+  "userCard": {
+    "container": "",
+    "nextPhoto": "",
+    "unknownCity": "",
+    "unknownName": "",
+    "userPhoto": "",
+    "years": ""
+  },
+  "userPreferences": {
+    "fields": {
+      "ageMax": "",
+      "ageMin": "",
+      "company": "",
+      "heightCm": "",
+      "jobTitle": "",
+      "maxDistanceKm": "",
+      "preferredActivityLevel": "",
+      "preferredCommunication": "",
+      "preferredDrinking": "",
+      "preferredEducationLevels": "",
+      "preferredGenders": "",
+      "preferredIntentions": "",
+      "preferredInterestsActivities": "",
+      "preferredInterestsCreativity": "",
+      "preferredInterestsLifestyle": "",
+      "preferredInterestsMusic": "",
+      "preferredInterestsNightlife": "",
+      "preferredInterestsSportsFitness": "",
+      "preferredInterestsTvCinema": "",
+      "preferredLanguages": "",
+      "preferredOrientations": "",
+      "preferredPets": "",
+      "preferredPronouns": "",
+      "preferredRelationshipTypes": "",
+      "preferredSmoking": "",
+      "preferredZodiacs": ""
+    },
+    "title": ""
+  }
+}
