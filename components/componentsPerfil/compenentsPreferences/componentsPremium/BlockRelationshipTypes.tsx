@@ -24,7 +24,7 @@ export default function BlockRelationshipTypes({
           key={o.value}
           label={o.label}
           active={prefs.includes(o.value)}
-          onPress={() => onToggle(o.value)}
+          onClick={() => onToggle(o.value)}  // ✅ corrigido
         />
       ))}
     </PreferenceBlock>
