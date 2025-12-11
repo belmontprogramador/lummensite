@@ -1,15 +1,13 @@
-// src/components/premiumPreferences/PreferenceChip.tsx
-
 interface PreferenceChipProps {
   label: string;
   active: boolean;
-  onPress: () => void;
+  onClick: () => void;
 }
 
-export default function PreferenceChip({ label, active, onPress }: PreferenceChipProps) {
+export default function PreferenceChip({ label, active, onClick }: PreferenceChipProps) {
   return (
     <button
-      onClick={onPress}
+      onClick={onClick}
       className={`
         px-4 py-2 rounded-full text-sm font-medium m-1
         transition-colors

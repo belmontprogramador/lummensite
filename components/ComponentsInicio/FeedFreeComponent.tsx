@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 export default function FeedFreeComponent({ user }: any) {
   const { t } = useTranslation();
@@ -20,19 +21,22 @@ export default function FeedFreeComponent({ user }: any) {
     "languages",
   ];
 
-  const labels: Record<string, string> = {
-    bio: t("feedFree.bio"),
-    birthday: t("feedFree.birthday"),
-    gender: t("feedFree.gender"),
-    orientation: t("feedFree.orientation"),
-    city: t("feedFree.city"),
-    state: t("feedFree.state"),
-    country: t("feedFree.country"),
-    pronoun: t("feedFree.pronoun"),
-    intention: t("feedFree.intention"),
-    relationshipType: t("feedFree.relationshipType"),
-    languages: t("feedFree.languages"),
-  };
+  // Agora realmente está correto:
+  // labels só são criados quando a tradução muda
+ const labels: Record<string, string> = {
+  bio: t("feedFree.bio"),
+  birthday: t("feedFree.birthday"),
+  gender: t("feedFree.gender"),
+  orientation: t("feedFree.orientation"),
+  city: t("feedFree.city"),
+  state: t("feedFree.state"),
+  country: t("feedFree.country"),
+  pronoun: t("feedFree.pronoun"),
+  intention: t("feedFree.intention"),
+  relationshipType: t("feedFree.relationshipType"),
+  languages: t("feedFree.languages"),
+};
+
 
   const getAge = (date: string) => {
     if (!date) return null;
@@ -71,12 +75,10 @@ export default function FeedFreeComponent({ user }: any) {
 
   return (
     <section className="mt-6">
-      {/* TÍTULO */}
       <h2 className="text-2xl font-bold mb-4">
         {t("feedFree.about")}
       </h2>
 
-      {/* LISTAGEM */}
       <div className="space-y-2">
         {freeKeys.map((key) => (
           <p key={key} className="text-base text-gray-700">

@@ -6,6 +6,9 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+// ⬇️ IMPORTANTE — VOCÊ ESQUECEU ISSO
+import { AuthProvider } from "@/context/AuthContext";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,16 +33,21 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#050509]`}>
 
-        {/* 🔥 HEADER GLOBAL */}
-        <Header />
+        {/* ⬇️ ENVOLVENDO COM AUTH PROVIDER */}
+        <AuthProvider>
 
-        {/* 🔥 CONTEÚDO DAS PÁGINAS */}
-        <main className="min-h-screen">
-          {children}
-        </main>
+          {/* 🔥 HEADER GLOBAL */}
+          <Header />
 
-        {/* 🔥 FOOTER GLOBAL */}
-        <Footer />
+          {/* 🔥 CONTEÚDO DAS PÁGINAS */}
+          <main className="min-h-screen">
+            {children}
+          </main>
+
+          {/* 🔥 FOOTER GLOBAL */}
+          <Footer />
+
+        </AuthProvider>
 
       </body>
     </html>

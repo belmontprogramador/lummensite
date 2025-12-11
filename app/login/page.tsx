@@ -19,18 +19,16 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorKey, setErrorKey] = useState<string | null>(null);
 
-  async function handleLogin() {
-    try {
-      setErrorKey(null);
-      await signIn(email, password);
-    } catch (err: any) {
-      if (err.code === "INVALID_CREDENTIALS") {
-        setErrorKey("login.errorInvalid");
-      } else {
-        setErrorKey("common.unexpectedError");
-      }
-    }
+ async function handleLogin() {
+  console.log("🚀 handleLogin FOI CHAMADO");
+  try {
+    setErrorKey(null);
+    await signIn(email, password);
+  } catch (err) {
+    console.log("❌ ERRO NO LOGIN:", err);
   }
+}
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050509] px-4">

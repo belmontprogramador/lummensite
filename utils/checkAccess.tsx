@@ -1,18 +1,18 @@
 // src/utils/checkAccess.tsx
 
-"use client";
+// ❌ Remova "use client" DAQUI — este arquivo precisa ser híbrido
+// NÃO coloque hooks aqui no topo
 
 import { useRouter } from "next/navigation";
 
-export function checkAccess(user: any, requiredTag: string) {
+// -----------------------------------------------------
+// 🚀 Componente interno que usa hook normalmente
+// -----------------------------------------------------
+export function CheckAccessBlockScreen() {
+  "use client"; // ← aqui sim pode usar hook
+
   const router = useRouter();
 
-  const allowed = user?.plan?.allowedRoutes?.includes(requiredTag);
-
-  // Se o usuário tem acesso, não renderiza bloqueio
-  if (allowed) return null;
-
-  // Tela de bloqueio (versão React Web)
   return (
     <div
       style={{
@@ -51,4 +51,17 @@ export function checkAccess(user: any, requiredTag: string) {
       </button>
     </div>
   );
+}
+
+// -----------------------------------------------------
+// 🚀 Função checkAccess (mantida exatamente como NO RN)
+// Agora sem hook — 100% segura para Next.js
+// -----------------------------------------------------
+export function checkAccess(user: any, requiredTag: string) {
+  const allowed = user?.plan?.allowedRoutes?.includes(requiredTag);
+
+  if (allowed) return null;
+
+  // retorna JSX normalmente, igual RN
+  return <CheckAccessBlockScreen />;
 }

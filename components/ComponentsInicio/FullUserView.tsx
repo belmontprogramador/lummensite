@@ -20,30 +20,13 @@ export default function FullUserView({
   onSuperLike,
   onSkip,
 }: any) {
-  // ====== SCREEN WIDTH (RN → Next) ======
-  const [screenWidth, setScreenWidth] = useState<number | null>(null);
-
-  useEffect(() => {
-    setScreenWidth(window.innerWidth);
-
-    const handler = () => setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
-  }, []);
-
   const { user: authUser } = useContext(AuthContext);
 
-  // ==========================
-  // MATCH MODAL STATE
-  // ==========================
   const [matchVisible, setMatchVisible] = useState(false);
   const [matchedUser, setMatchedUser] = useState<any>(null);
 
   async function handleMatch(targetUser: any) {
-    if (!targetUser?.id) {
-      console.log("⚠️ MATCH sem user válido. Cancelado.");
-      return;
-    }
+    if (!targetUser?.id) return;
 
     try {
       const res = await UsersAPI.getOne(targetUser.id);
@@ -54,54 +37,51 @@ export default function FullUserView({
     }
   }
 
-  // ==========================
-  // PREMIUM LEVELS
-  // ==========================
   const allowed = authUser?.plan?.allowedRoutes || [];
   const isPremium = allowed.includes("feed_list_premium");
   const isSuperPremium = allowed.includes("feed_list_super_premium");
 
   return (
-    <div
-      className="overflow-y-auto p-5 w-full"
-      style={{ maxWidth: screenWidth ?? "100%" }}
-    >
-      {/* Foto + Carousel */}
-      <SwipeUserCard
-        user={user}
-        onSkip={() => {
-          console.log("⏭️ FullUserView: onSkip recebido para user:", user.id);
-          onSkip?.(user.id);
-        }}
-      />
+    <div className="w-full h-full flex flex-col items-center justify-start overflow-hidden">
 
-      {/* Buttons Like / Dislike / SuperLike */}
-      <LikeDislikeButtons
-        user={user}
-        onLike={onLike}
-        onDislike={onDislike}
-        onSuperLike={onSuperLike}
-        onMatch={handleMatch}
-      />
+      {/* FOTO / SWIPE CARD */}
+      <div className="w-full flex justify-center">
+        <SwipeUserCard
+          user={user}
+          onSkip={() => onSkip?.(user.id)}
+        />
+      </div>
 
-      {/* ========= FREE ========= */}
-      {!isPremium && !isSuperPremium && (
-        <FeedFreeComponent user={user} />
-      )}
+      {/* BOTÕES */}
+      <div className="w-full flex justify-center mt-4">
+        <LikeDislikeButtons
+          user={user}
+          onLike={onLike}
+          onDislike={onDislike}
+          onSuperLike={onSuperLike}
+          onMatch={handleMatch}
+        />
+      </div>
 
-      {/* ========= PREMIUM ========= */}
-      {(isPremium || isSuperPremium) && (
-        <FeedPremiumComponent user={user} />
-      )}
+      {/* DETALHES */}
+      <div className="w-full max-w-xl px-4 mt-6 overflow-y-auto">
 
-      {/* ========= SUPER PREMIUM ========= */}
-      {isSuperPremium && (
-        <UserPreferencesView preference={user.preference} />
-      )}
+        {!isPremium && !isSuperPremium && (
+          <FeedFreeComponent user={user} />
+        )}
 
-      <div className="h-24" />
+        {(isPremium || isSuperPremium) && (
+          <FeedPremiumComponent user={user} />
+        )}
 
-      {/* MATCH MODAL (shadcn-ready) */}
+        {isSuperPremium && (
+          <UserPreferencesView preference={user.preference} />
+        )}
+
+        <div className="h-20" /> {/* espaçamento final */}
+      </div>
+
+      {/* MATCH MODAL */}
       <MatchModal
         visible={matchVisible}
         user1={authUser}
