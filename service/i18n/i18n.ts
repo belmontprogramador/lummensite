@@ -1,6 +1,5 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import * as Localization from "expo-localization";
 
 import en from "./locales/en/translation.json";
 import pt from "./locales/pt/translation.json";
@@ -13,7 +12,15 @@ import zh from "./locales/zh/translation.json";
 import ru from "./locales/ru/translation.json";
 import ar from "./locales/ar/translation.json";
 
-const deviceLanguage = Localization.getLocales()[0].languageCode || "en";
+// ---- Detecta idioma no navegador (client-side) ----
+function detectLanguage() {
+  if (typeof window !== "undefined" && navigator?.language) {
+    return navigator.language.split("-")[0]; // ex: "pt-BR" → "pt"
+  }
+  return "en"; // fallback no SSR
+}
+
+const deviceLanguage = detectLanguage();
 
 console.log("🌍 Idioma detectado:", deviceLanguage);
 
