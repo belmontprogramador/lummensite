@@ -4,13 +4,13 @@
 interface Props {
   label: string;
   active: boolean;
-  onPress: () => void;
+  onClick: () => void;   // ✔️ CORRETO PARA WEB
 }
 
-export default function PreferenceChip({ label, active, onPress }: Props) {
+export default function PreferenceChip({ label, active, onClick }: Props) {
   return (
     <button
-      onClick={onPress}
+      onClick={onClick}     // ✔️ CORRETO
       className={`
         px-4 py-2 rounded-full text-sm font-medium m-1 transition
         ${active ? "bg-primary text-white" : "bg-gray-200 text-black"}
