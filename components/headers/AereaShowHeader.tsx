@@ -1,25 +1,17 @@
-import { View, Text, Image } from "react-native";
+"use client";
 
 export function AereaShowHeader() {
   return (
-    <View
-      style={{
-        alignItems: "center",
-        justifyContent: "center",
-        paddingVertical: 14,
-        borderBottomWidth: 1,
-        borderColor: "#ddd",
-        backgroundColor: "#fff",
-      }}
-    >
-      <Image
-        source={require("../../assets/images/logo2.png")}
-        style={{ width: 40, height: 40 }}
-        resizeMode="contain"
+    <div className="flex flex-col items-center justify-center py-4 border-b border-gray-300 bg-white">
+      <img
+        src="/logo2.png" 
+        alt="Comunidade Logo"
+        className="w-10 h-10 object-contain"
       />
-      <Text style={{ marginTop: 4, fontSize: 16, fontWeight: "600" }}>
+
+      <p className="mt-1 text-base font-semibold">
         Comunidade
-      </Text>
-    </View>
+      </p>
+    </div>
   );
 }
