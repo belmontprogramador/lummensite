@@ -34,9 +34,7 @@ export default function LikesRecebidos() {
     load();
   }, []);
 
-  // ============================
-  // LOADING — Skeleton
-  // ============================
+  // LOADING
   if (loading) {
     return (
       <div className="flex flex-col items-center pt-10 space-y-3">
@@ -48,9 +46,7 @@ export default function LikesRecebidos() {
     );
   }
 
-  // ============================
-  // ERRO
-  // ============================
+  // ERROR
   if (errorKey) {
     return (
       <div className="text-center p-5">
@@ -61,12 +57,8 @@ export default function LikesRecebidos() {
 
   return (
     <div className="p-5">
-      {/* TÍTULO */}
-      <p className="text-2xl font-bold mb-5">
-        {t("likesReceived.title")}
-      </p>
+      <p className="text-2xl font-bold mb-5">{t("likesReceived.title")}</p>
 
-      {/* LISTA VAZIA */}
       {likes.length === 0 ? (
         <p className="text-base text-muted-foreground">
           {t("likesReceived.empty")}
@@ -78,7 +70,7 @@ export default function LikesRecebidos() {
               key={like.id}
               type="received"
               user={like.liker}
-              onPress={() => router.push(`/perfilUsuario/${like.liker.id}`)}
+              onClick={() => router.push(`/perfilUsuario/${like.liker.id}`)}
             />
           ))}
         </div>

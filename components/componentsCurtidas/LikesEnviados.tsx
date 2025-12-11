@@ -34,9 +34,7 @@ export default function LikesEnviados() {
     load();
   }, []);
 
-  // ============================
   // LOADING
-  // ============================
   if (loading) {
     return (
       <div className="flex flex-col items-center pt-10 space-y-3">
@@ -46,9 +44,7 @@ export default function LikesEnviados() {
     );
   }
 
-  // ============================
   // ERRO
-  // ============================
   if (errorKey) {
     return (
       <div className="text-center p-5">
@@ -59,12 +55,8 @@ export default function LikesEnviados() {
 
   return (
     <div className="p-5">
-      {/* Título */}
-      <p className="text-2xl font-bold mb-5">
-        {t("likesSent.title")}
-      </p>
+      <p className="text-2xl font-bold mb-5">{t("likesSent.title")}</p>
 
-      {/* Lista vazia */}
       {likes.length === 0 ? (
         <p className="text-base text-muted-foreground">
           {t("likesSent.empty")}
@@ -76,7 +68,7 @@ export default function LikesEnviados() {
               key={like.id}
               type="sent"
               user={like.liked}
-              onPress={() => router.push(`/perfilUsuario/${like.liked.id}`)}
+              onClick={() => router.push(`/perfilUsuario/${like.liked.id}`)}
             />
           ))}
         </div>

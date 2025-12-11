@@ -1,52 +1,48 @@
-import { View, Image, TouchableOpacity } from "react-native";
-import { router } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+"use client";
 
-export function GlobalHeader() {
+import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+export function Header() {
+  const router = useRouter();
+
   function goBack() {
-    // Se tiver histórico, volta
-    if (router.canGoBack()) {
+    if (window.history.length > 1) {
       router.back();
     } else {
-      // Se não tiver, vai para a home
       router.replace("/inicio");
     }
   }
 
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-        borderBottomWidth: 1,
-        borderColor: "#e5e5e5",
-        backgroundColor: "#fff",
-      }}
-    >
+    <div className="flex items-center justify-between px-4 py-3 border-b bg-white">
+      
       {/* Botão de voltar */}
-      <TouchableOpacity onPress={goBack}>
-        <Ionicons name="arrow-back" size={24} color="black" />
-      </TouchableOpacity>
+      <button onClick={goBack} className="p-2 hover:bg-gray-100 rounded-full">
+        <ArrowLeft className="w-6 h-6" />
+      </button>
 
       {/* Centro: duas imagens */}
-      <View style={{ flexDirection: "row", gap: 8 }}>
+      <div className="flex items-center gap-2">
         <Image
-          source={require("../../assets/images/logo2.png")}
-          style={{ width: 32, height: 32 }}
-          resizeMode="contain"
+          src="/logo2.png"
+          alt="Logo 2"
+          width={32}
+          height={32}
+          className="object-contain"
         />
         <Image
-          source={require("../../assets/images/logo1.png")}
-          style={{ width: 32, height: 32 }}
-          resizeMode="contain"
+          src="/logo1.png"
+          alt="Logo 1"
+          width={32}
+          height={32}
+          className="object-contain"
         />
-      </View>
+      </div>
 
       {/* Espaço vazio para equilibrar */}
-      <View style={{ width: 24 }} />
-    </View>
+      <div className="w-6" />
+    </div>
   );
 }

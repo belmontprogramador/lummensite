@@ -6,12 +6,18 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const BASE_URL = "https://botgrupo.lummen-app.com";
 
-export default function LikeCard({ user, type, onPress }: any) {
+interface LikeCardProps {
+  user: any;
+  type: "received" | "sent" | string;
+  onClick?: () => void;
+}
+
+export default function LikeCard({ user, type, onClick }: LikeCardProps) {
   const { t } = useTranslation();
 
   const photoUrl = user?.photo
     ? `${BASE_URL}${user.photo}`
-    : t("likeCard.placeholderImage");
+    : (t("likeCard.placeholderImage") as string);
 
   const label =
     type === "received"
@@ -22,7 +28,7 @@ export default function LikeCard({ user, type, onPress }: any) {
 
   return (
     <Card
-      onClick={onPress}
+      onClick={onClick}
       className="
         w-full flex items-center p-4 cursor-pointer
         transition hover:shadow-md
@@ -30,16 +36,14 @@ export default function LikeCard({ user, type, onPress }: any) {
       aria-label={t("likeCard.openProfile") as string}
     >
       <Avatar className="h-14 w-14 mr-4">
-        <AvatarImage src={photoUrl} alt={user.name} />
+        <AvatarImage src={photoUrl} alt={user?.name ?? "User"} />
         <AvatarFallback>{user?.name?.charAt(0) ?? "U"}</AvatarFallback>
       </Avatar>
 
       <div>
         <p className="text-lg font-semibold">{user.name}</p>
 
-        <p className="text-sm text-muted-foreground mt-1">
-          {label}
-        </p>
+        <p className="text-sm text-muted-foreground mt-1">{label}</p>
       </div>
     </Card>
   );

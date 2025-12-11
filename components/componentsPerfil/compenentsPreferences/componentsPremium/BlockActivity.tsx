@@ -3,17 +3,26 @@
 import PreferenceBlock from "./PreferenceBlock";
 import PreferenceChip from "./PreferenceChip";
 
+interface Option {
+  value: string;
+  label: string;
+}
+
 interface Props {
-  options: any[];
-  prefs: string[];
+  options?: Option[];
+  prefs?: string[];
   onToggle: (value: string) => void;
 }
 
-export default function BlockActivity({ options = [], prefs = [], onToggle }: Props) {
+export default function BlockActivity({
+  options = [],
+  prefs = [],
+  onToggle,
+}: Props) {
   return (
     <PreferenceBlock title="Activity Level">
       <div className="flex flex-wrap gap-2">
-        {options.map((o: any) => (
+        {options.map((o) => (
           <PreferenceChip
             key={o.value}
             label={o.label}

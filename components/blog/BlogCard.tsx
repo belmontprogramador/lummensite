@@ -5,7 +5,12 @@ import { useTranslation } from "react-i18next";
 
 const BASE_URL = "https://botgrupo.lummen-app.com";
 
-export default function BlogCard({ post, onPress }: any) {
+interface BlogCardProps {
+  post: any;
+  onClick?: () => void;
+}
+
+export default function BlogCard({ post, onClick }: BlogCardProps) {
   const { t } = useTranslation();
 
   const cover = post.coverImage
@@ -26,9 +31,8 @@ export default function BlogCard({ post, onPress }: any) {
   return (
     <Card
       className="cursor-pointer overflow-hidden rounded-xl shadow-sm transition hover:shadow-md"
-      onClick={onPress}
+      onClick={onClick}
     >
-      {/* IMAGE */}
       {cover && (
         <img
           src={cover}
@@ -37,11 +41,8 @@ export default function BlogCard({ post, onPress }: any) {
         />
       )}
 
-      {/* CONTENT */}
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-semibold">
-          {post.title}
-        </CardTitle>
+        <CardTitle className="text-lg font-semibold">{post.title}</CardTitle>
 
         {post.subtitle && (
           <p className="text-sm text-muted-foreground mt-1">
