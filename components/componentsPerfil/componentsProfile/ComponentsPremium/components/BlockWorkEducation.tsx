@@ -22,10 +22,7 @@ export default function BlockWorkEducation({
 
   return (
     <div className="space-y-6">
-
-      {/* ========================= */}
       {/* JOB TITLE */}
-      {/* ========================= */}
       <PreferenceBlock title={t("profile.work.jobTitle")}>
         <Input
           value={form.jobTitle || ""}
@@ -35,9 +32,7 @@ export default function BlockWorkEducation({
         />
       </PreferenceBlock>
 
-      {/* ========================= */}
       {/* COMPANY */}
-      {/* ========================= */}
       <PreferenceBlock title={t("profile.work.company")}>
         <Input
           value={form.company || ""}
@@ -47,9 +42,7 @@ export default function BlockWorkEducation({
         />
       </PreferenceBlock>
 
-      {/* ========================= */}
       {/* EDUCATION LEVEL */}
-      {/* ========================= */}
       <PreferenceBlock title={t("profile.work.educationLevel")}>
         <div className="flex flex-wrap gap-2">
           {(enums.EducationLevel || []).map((o: any) => (
@@ -57,12 +50,11 @@ export default function BlockWorkEducation({
               key={o.value}
               label={o.label}
               active={(form.educationLevel || []).includes(o.value)}
-              onPress={() => onToggle("educationLevel", o.value)}
+              onClick={() => onToggle("educationLevel", o.value)}  // ✔️ CORRIGIDO
             />
           ))}
         </div>
       </PreferenceBlock>
-
     </div>
   );
 }

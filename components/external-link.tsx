@@ -1,25 +1,27 @@
-import { Href, Link } from 'expo-router';
-import { openBrowserAsync, WebBrowserPresentationStyle } from 'expo-web-browser';
-import { type ComponentProps } from 'react';
+"use client";
 
-type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: Href & string };
+import Link from "next/link";
+
+interface Props extends React.ComponentProps<typeof Link> {
+  href: string;
+}
 
 export function ExternalLink({ href, ...rest }: Props) {
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    // Para links externos, abre em nova aba
+    if (href.startsWith("http")) {
+      e.preventDefault();
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+  }
+
   return (
     <Link
-      target="_blank"
       {...rest}
       href={href}
-      onPress={async (event) => {
-        if (process.env.EXPO_OS !== 'web') {
-          // Prevent the default behavior of linking to the default browser on native.
-          event.preventDefault();
-          // Open the link in an in-app browser.
-          await openBrowserAsync(href, {
-            presentationStyle: WebBrowserPresentationStyle.AUTOMATIC,
-          });
-        }
-      }}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={handleClick} // ✔️ Agora usando onClick (NEXT.JS)
     />
   );
 }

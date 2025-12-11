@@ -35,7 +35,7 @@ export default function BlockZodiac({
             key={o.value}
             label={o.label}
             active={prefs.includes(o.value)}
-            onPress={() => onToggle(o.value)}
+            onClick={() => onToggle(o.value)}    
           />
         ))}
       </div>
